@@ -17,7 +17,7 @@ if(DEFINED SKBUILD)
   include_directories(${pybind11_INCLUDE_DIR})
   add_library(_core MODULE src/_core.cpp)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS}
-                                           "${eigen_SOURCE_DIR}/eigen-3.4.0")
+                                           "${eigen_SOURCE_DIR}")
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
 
 else()
