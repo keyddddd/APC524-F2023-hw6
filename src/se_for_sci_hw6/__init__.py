@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ._core import HarmonicOscillator
+from _core import HarmonicOscillator
 
 __version__ = "0.1.0"
 
