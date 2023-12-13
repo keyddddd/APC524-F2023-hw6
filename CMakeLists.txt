@@ -17,7 +17,7 @@ if(DEFINED SKBUILD)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
   python_extension_module(_core)
-  
+
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
   target_include_directories(main PRIVATE src "${eigen_SOURCE_DIR}")
