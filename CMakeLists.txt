@@ -12,14 +12,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 if(DEFINED SKBUILD)
-
   find_package(pybind11 REQUIRED)
-  include_directories(${pybind11_INCLUDE_DIR})
   add_library(_core MODULE src/_core.cpp)
-  target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS}
+  target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS} src
                                            "${eigen_SOURCE_DIR}")
-  target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
-
+  target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} Eigen3::Eigen)
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
   target_include_directories(main PRIVATE src "${eigen_SOURCE_DIR}")
