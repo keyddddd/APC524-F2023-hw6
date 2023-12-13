@@ -12,10 +12,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 if(DEFINED SKBUILD)
-  # Find the Python libraries, ensuring we build against the right version
-  find_package(PythonExtensions REQUIRED)
 
-  # Specify the target module (Python extension)
   add_library(_core MODULE src/_core.cpp)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
