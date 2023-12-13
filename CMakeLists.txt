@@ -3,7 +3,6 @@ project(se_for_sci_hw6 LANGUAGES CXX)
 
 include(FetchContent)
 
-# Add Eigen directly using FetchContent
 FetchContent_Declare(
   eigen
   URL https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
@@ -14,8 +13,7 @@ FetchContent_MakeAvailable(eigen)
 if(DEFINED SKBUILD)
   find_package(pybind11 REQUIRED)
   add_library(_core MODULE src/_core.cpp)
-  target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS} src
-                                           ${eigen_SOURCE_DIR})
+  target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} Eigen3::Eigen)
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
