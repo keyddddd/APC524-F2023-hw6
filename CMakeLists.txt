@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.18...3.25)
 project(se_for_sci_hw6 LANGUAGES CXX)
+find_package(PythonExtensions REQUIRED)
 
 include(FetchContent)
-
 FetchContent_Declare(
   eigen
   URL https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
@@ -17,6 +17,7 @@ if(DEFINED SKBUILD)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
   python_extension_module(_core)
+  
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
   target_include_directories(main PRIVATE src "${eigen_SOURCE_DIR}")
