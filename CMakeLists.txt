@@ -12,12 +12,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 if(DEFINED SKBUILD)
-  find_package(Python REQUIRED COMPONENTS Interpreter Development)
-  find_package(PythonExtensions REQUIRED)
+
+  find_package(pybind11 REQUIRED)
   add_library(_core MODULE src/_core.cpp)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
-  python_extension_module(_core)
 
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
