@@ -14,6 +14,8 @@ FetchContent_MakeAvailable(eigen)
 if(DEFINED SKBUILD)
 
   find_package(pybind11 REQUIRED)
+  include_directories(${pybind11_INCLUDE_DIR})
+  target_include_directories(main PRIVATE src "${eigen_SOURCE_DIR}/eigen-3.4.0")
   add_library(_core MODULE src/_core.cpp)
   target_include_directories(_core PRIVATE ${PYTHON_INCLUDE_DIRS})
   target_link_libraries(_core PRIVATE ${PYTHON_LIBRARIES} eigen)
